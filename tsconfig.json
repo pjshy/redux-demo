@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "rootDir": "./",
+    "sourceMap": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "baseUrl": "client",
+    "paths": {
+      "common": [ "*" ]
+    },
+    "types": [
+      "core-js"
+    ],
+    "experimentalDecorators": true,
+    "newLine": "lf",
+    "noEmitHelpers": true,
+    "noImplicitAny": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}
