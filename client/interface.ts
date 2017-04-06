@@ -1,7 +1,14 @@
-export interface UIState {
-  text: string
-  completed: boolean
+export interface Todo {
   id: number
+  text: string
+  completed: string
+  editing: boolean
 }
 
-export type IState = UIState[]
+export type Todos = Todo[]
+
+export interface AppUIState {
+  newTodo: boolean
+  todos: Todos
+  todoFilter: string
+}
