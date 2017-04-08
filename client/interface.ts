@@ -1,7 +1,7 @@
 export interface Todo {
   id: number
   text: string
-  completed: string
+  completed: boolean
   editing: boolean
 }
 

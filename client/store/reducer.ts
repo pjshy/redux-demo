@@ -44,10 +44,21 @@ export const reducer = handleActions<AppUIState>({
         ? { ...newTodo }
         : todo
     )
+    return state
   },
 
   [completeTodo.toString()]: (state: AppUIState, action: Action<Todo>) => {
     const newTodo = action.payload as Todo
-    state.todos.map(todo => todo.id === newTodo.id ? )
+    state.todos.map(todo => todo.id === newTodo.id ? todo.completed = true : '')
+  },
+
+  [clearCompleted.toString()]: (state: AppUIState) => {
+    state.todos = state.todos.filter(todo => todo.completed !== true)
+    return state
+  },
+
+  [toggleFilter.toString()]: (state: AppUIState, action: Action<string>) => {
+    state.todoFilter = action.payload as string
+    return state
   }
 }, initState)
