@@ -6,7 +6,14 @@ import { AppUIState, Todo } from './../interface'
 // 定义initState
 export const initState: AppUIState = {
   newTodo: false,
-  todos: [],
+  todos: [
+    {
+      id: 0,
+      text: 'hello world',
+      completed: false,
+      editing: false
+    }
+  ],
   todoFilter: 'all'
 }
 
@@ -28,37 +35,37 @@ export const reducer = handleActions<AppUIState>({
       ...newTodo,
       id: state.todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1
     }, ...todos]
-    return state
+    return { ...state }
   },
 
   [deleteTodo.toString()]: (state: AppUIState, action: Action<number>) => {
     const index = action.payload
     state.todos = state.todos.filter(todo => todo.id !== index)
-    return state
+    return { ...state }
   },
 
   [editTodo.toString()]: (state: AppUIState, action: Action<Todo>) => {
     const newTodo = action.payload as Todo
-    state.todos = state.todos.map(todo =>
-      todo.id === newTodo.id
-        ? { ...newTodo }
-        : todo
-    )
+    state = {
+      ...state,
+      todos: state.todos.map(todo => todo.id === newTodo.id ? newTodo : todo)
+    }
     return state
   },
 
   [completeTodo.toString()]: (state: AppUIState, action: Action<Todo>) => {
     const newTodo = action.payload as Todo
     state.todos.map(todo => todo.id === newTodo.id ? todo.completed = true : '')
+    return { ...state }
   },
 
   [clearCompleted.toString()]: (state: AppUIState) => {
     state.todos = state.todos.filter(todo => todo.completed !== true)
-    return state
+    return { ...state }
   },
 
   [toggleFilter.toString()]: (state: AppUIState, action: Action<string>) => {
     state.todoFilter = action.payload as string
-    return state
+    return { ...state }
   }
 }, initState)
