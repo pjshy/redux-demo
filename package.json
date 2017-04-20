@@ -1,6 +1,6 @@
 {
-  "name": "redux-demo",
-  "version": "1.0.0",
+  "name": "redux-todos",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "redux"
+    "React",
+    "Redux",
+    "TypeScript"
   ],
   "author": "phy",
   "license": "ISC",
