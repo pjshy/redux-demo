@@ -5,3 +5,8 @@ export interface Todo {
 }
 
 export type Filter = string  //show_all, show_completed, show_active
+
+export interface AppState {
+  todos: Todo[],
+  filter: Filter
+}
