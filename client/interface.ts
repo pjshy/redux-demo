@@ -4,6 +4,4 @@ export interface Todo {
   completed: boolean
 }
 
-export interface Filter {
-  filter: string //show_all, show_completed, show_active
-}
+export type Filter = string  //show_all, show_completed, show_active

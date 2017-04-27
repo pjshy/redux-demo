@@ -17,9 +17,7 @@ const todosInit:Todo[] = [{
   completed: false
 }]
 
-const todosFilter: Filter = {
-  filter: 'show_all'  //show_all, show_completed, show_active
-}
+const todosFilter: Filter = 'show_all'  //show_all, show_completed, show_active
 
 export const todos = handleActions<Todo[], Todo>({
   [addTodo.toString()]: (state: Todo[], action: Action<string>): Todo[] => {
@@ -72,6 +70,6 @@ export const todos = handleActions<Todo[], Todo>({
 
 export const filter = handleActions<Filter, Action<string>>({
   [toggleFilter.toString()]: (state: Filter, action: Action<string>) => {
-    return { ...state, filter: action.payload }
+    return action.payload
   }
 }, todosFilter)
