@@ -70,6 +70,10 @@ export const todos = handleActions<Todo[], Todo>({
 
 export const filter = handleActions<Filter, Action<string>>({
   [toggleFilter.toString()]: (state: Filter, action: Action<string>) => {
-    return action.payload
+    if (state === action.payload) {
+      return state
+    } else {
+      return action.payload
+    }
   }
 }, todosFilter)
