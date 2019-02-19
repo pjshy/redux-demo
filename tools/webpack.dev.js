@@ -2,17 +2,13 @@
 
 const webpackMerge = require('webpack-merge')
 const webpackConfig = require('./webpack.prod')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
 
 const webpackServerPath = 'http://localhost:8889/'
 
 webpackConfig.output.publicPath = webpackServerPath
 
 module.exports = webpackMerge(webpackConfig, {
-  debug: true,
-
   devtool: 'eval',
 
   devServer: {
@@ -32,8 +28,6 @@ module.exports = webpackMerge(webpackConfig, {
   },
 
   plugins: [
-    new ExtractTextPlugin('', { disable: true }),
-
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',

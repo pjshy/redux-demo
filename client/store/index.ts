@@ -5,15 +5,14 @@ import { todos, filter } from './reducer'
 const devToolsExtension = 'devToolsExtension'
 const reducer = combineReducers({
   todos,
-  filter
+  filter,
 })
 
 const configureStore = () => {
-  const store = createStore(
+  return createStore(
     reducer,
-    window[devToolsExtension] ? window[devToolsExtension]() : (f) => f
+    window[devToolsExtension] ? window[devToolsExtension]() : (f) => f,
   )
-  return store
 }
 
 export const store = configureStore()

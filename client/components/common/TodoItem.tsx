@@ -18,7 +18,7 @@ interface State {
 }
 
 export class TodoItemComponent extends React.PureComponent<Props, State> {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
     this.state = { editing: false }
   }
@@ -44,36 +44,39 @@ export class TodoItemComponent extends React.PureComponent<Props, State> {
     this.props.deleteTodo(todo)
   }
 
-  render() {
+  render () {
     const { todo } = this.props
 
     let element
     if (this.state.editing) {
       element = (
-        <TodoInput text={ todo.text }
+        <TodoInput
+          text={ todo.text }
           editing={ this.state.editing }
-          onSave={ this.handleSave(todo) } />
+          onSave={ this.handleSave(todo) }
+        />
       )
     } else {
       element = (
-        <div className="view">
-          <input type="checkbox"
-            className="toggle"
+        <div className='view'>
+          <input
+            type='checkbox'
+            className='toggle'
             checked={ todo.completed }
-            onChange={ this.handleToggle(todo) } />
+            onChange={ this.handleToggle(todo) }
+          />
           <label onDoubleClick={ this.handleDoubleClick }>
             { todo.text }
           </label>
-          <button className="destroy" onClick={ this.handleDelete(todo) }></button>
+          <button className='destroy' onClick={ this.handleDelete(todo) } />
         </div>
       )
     }
 
     return (
-      <li className={classNames({
-        completed: todo.completed,
-        editing: this.state.editing
-      })}>
+      <li
+        className={ classNames({ completed: todo.completed, editing: this.state.editing }) }
+      >
         { element }
       </li>
     )

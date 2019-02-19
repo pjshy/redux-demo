@@ -8,7 +8,11 @@ export interface MapDispatchToProps extends MapDispatchToPropsObject {
 }
 
 const mapAppDispatchToProps: MapDispatchToProps = {
-  addTodo
+  addTodo,
 }
 
-export const HeaderContainer = connect(() => {}, mapAppDispatchToProps)(HeaderComponent)
+const noop = () => {
+  // todo nothing
+}
+
+export const HeaderContainer = connect(noop, mapAppDispatchToProps)(HeaderComponent)

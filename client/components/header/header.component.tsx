@@ -6,16 +6,17 @@ import { MapDispatchToProps } from './header.container'
 
 type Props = MapDispatchToProps & void
 
-export class HeaderComponent extends React.PureComponent<Props, void> {
+export class HeaderComponent extends React.PureComponent<Props, {}> {
 
-  render() {
+  render () {
     return (
-      <header className="header">
+      <header className='header'>
         <h1>todos</h1>
         <TodoInput
           newTodo={ true }
           onSave={ this.props.addTodo }
-          placeholder="what to do?" />
+          placeholder='what to do?'
+        />
       </header>
     )
   }

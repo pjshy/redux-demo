@@ -3,11 +3,11 @@ import * as React from 'react'
 import { HeaderContainer as Header } from './header'
 import { MainContainer as Main } from './mainsection'
 
-export class AppComponent extends React.PureComponent<void, void> {
+export class AppComponent extends React.PureComponent<{}, {}> {
 
-  render() {
+  render () {
     return (
-      <div className="todoapp">
+      <div className='todoapp'>
         <Header />
         <Main />
       </div>
