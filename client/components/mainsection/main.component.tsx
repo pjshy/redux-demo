@@ -54,11 +54,8 @@ export class MainComponent extends React.PureComponent<Props, void> {
     }
   }
 
-  render() {
-    const { todos, completeTodo, deleteTodo, editTodo, filter } = this.props
-
-    const filteredTodos = this.filterItems(filter)(todos)
-    const completedCount = todos.reduce(
+  render () {
+    const completedCount = this.props.todos.reduce(
       (count: number, todo: Todo) => todo.completed ? count + 1 : count,
       0,
     )
@@ -67,19 +64,24 @@ export class MainComponent extends React.PureComponent<Props, void> {
       <section className='main'>
         { this.renderToggleAll(completedCount) }
         <ul className='todo-list'>
-          {
-            filteredTodos.map(todo => {
-              return <TodoItem
-                key={ todo.id }
-                todo={ todo }
-                completedTodo={ completeTodo }
-                deleteTodo={ deleteTodo }
-                editTodo={ editTodo } />
-            })
-          }
+          { this.renderList() }
         </ul>
         { this.renderFooter(completedCount) }
       </section>
     )
+  }
+
+  private renderList = () => {
+    const { todos, completeTodo, deleteTodo, editTodo, filter } = this.props
+    const filteredTodos = this.filterItems(filter)(todos)
+    return filteredTodos.map((todo) => {
+      return <TodoItem
+        key={ todo.id }
+        todo={ todo }
+        completedTodo={ completeTodo }
+        deleteTodo={ deleteTodo }
+        editTodo={ editTodo }
+      />
+    })
   }
 }

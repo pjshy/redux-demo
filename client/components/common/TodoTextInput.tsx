@@ -14,10 +14,10 @@ interface State {
 }
 
 export class TodoInput extends React.PureComponent<Props, State> {
-  constructor(props, context) {
+  constructor (props, context) {
     super(props, context)
     this.state = {
-      text: this.props.text || ''
+      text: this.props.text || '',
     }
   }
 
@@ -29,13 +29,13 @@ export class TodoInput extends React.PureComponent<Props, State> {
 
   handleChange = (e) => {
     this.setState({
-      text: e.target.value
+      text: e.target.value,
     })
   }
 
   handleSubmit = (e) => {
     const text = e.target.value.trim()
-    if (text.length === 0) return
+    if (text.length === 0) { return }
     if (e.which === 13) {
       this.props.onSave(text)
       if (this.props.newTodo) {
@@ -44,19 +44,22 @@ export class TodoInput extends React.PureComponent<Props, State> {
     }
   }
 
-  render() {
+  render () {
+    const classnames = classNames({
+      'edit': this.props.editing,
+      'new-todo': this.props.newTodo,
+    })
     return (
-      <input type="text"
-        className={ classNames({
-          edit: this.props.editing,
-          'new-todo': this.props.newTodo
-        }) }
+      <input
+        type='text'
+        className={ classnames }
         placeholder={ this.props.placeholder }
         value={ this.state.text }
         autoFocus={ true }
         onBlur={ this.handleBlur }
         onChange={ this.handleChange }
-        onKeyDown={ this.handleSubmit } />
+        onKeyDown={ this.handleSubmit }
+      />
     )
   }
 }
