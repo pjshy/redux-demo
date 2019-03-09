@@ -14,19 +14,21 @@ export class MainComponent extends React.PureComponent<Props, void> {
     const filterFun = {
       show_all: () => true,
       show_completed: (todo: Todo) => todo.completed,
-      show_active: (todo: Todo) => !todo.completed
+      show_active: (todo: Todo) => !todo.completed,
     }
     return todos.filter(filterFun[filterType])
   }
 
   renderToggleAll = (completedCount) => {
-    const { todos, completeAll } = this.props
+    const { todos } = this.props
     if (todos.length > 0) {
       return (
-        <input type="checkbox"
-          className="toggle-all"
+        <input
+          type='checkbox'
+          className='toggle-all'
           checked={ completedCount === todos.length }
-          onChange={ () => completeAll() } />
+          onChange={ this.props.completeAll }
+        />
       )
     } else {
       return
@@ -44,7 +46,8 @@ export class MainComponent extends React.PureComponent<Props, void> {
           activeCount={ activeCount }
           filter={ filter }
           onShow={ toggleFilter }
-          clearCompleted={ clearCompleted } />
+          clearCompleted={ clearCompleted }
+        />
       )
     } else {
       return
@@ -57,13 +60,13 @@ export class MainComponent extends React.PureComponent<Props, void> {
     const filteredTodos = this.filterItems(filter)(todos)
     const completedCount = todos.reduce(
       (count: number, todo: Todo) => todo.completed ? count + 1 : count,
-      0
+      0,
     )
 
     return (
-      <section className="main">
+      <section className='main'>
         { this.renderToggleAll(completedCount) }
-        <ul className="todo-list">
+        <ul className='todo-list'>
           {
             filteredTodos.map(todo => {
               return <TodoItem

@@ -4,9 +4,7 @@ import { TodoInput } from '../common'
 
 import { MapDispatchToProps } from './header.container'
 
-type Props = MapDispatchToProps & void
-
-export class HeaderComponent extends React.PureComponent<Props, {}> {
+export class HeaderComponent extends React.PureComponent<MapDispatchToProps> {
 
   render () {
     return (

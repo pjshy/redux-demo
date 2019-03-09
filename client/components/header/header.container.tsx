@@ -1,4 +1,4 @@
-import { connect, MapDispatchToPropsObject } from 'react-redux'
+import { connect, MapDispatchToPropsObject, MapStateToProps } from 'react-redux'
 
 import { addTodo } from '../../store'
 import { HeaderComponent } from './header.component'
@@ -11,8 +11,12 @@ const mapAppDispatchToProps: MapDispatchToProps = {
   addTodo,
 }
 
-const noop = () => {
-  // todo nothing
+const mapAppStateToProps: MapStateToProps<{}, {}> = () => {
+  return {}
 }
 
-export const HeaderContainer = connect(noop, mapAppDispatchToProps)(HeaderComponent)
+// https://github.com/DefinitelyTyped/DefinitelyTyped/issues/19989
+export const HeaderContainer = connect(
+  mapAppStateToProps,
+  mapAppDispatchToProps,
+)(HeaderComponent as any) as any

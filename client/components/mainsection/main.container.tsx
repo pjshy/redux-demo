@@ -22,7 +22,7 @@ export interface MapDispatchToProps extends MapDispatchToPropsObject {
 const mapAppStateToProps = (state: AppState): MapStateToProps => {
   return {
     todos: state.todos,
-    filter: state.filter
+    filter: state.filter,
   }
 }
 
@@ -32,7 +32,10 @@ const mapAppDispatchToProps: MapDispatchToProps = {
   deleteTodo,
   completeAll,
   toggleFilter,
-  clearCompleted
+  clearCompleted,
 }
 
-export const MainContainer = connect(mapAppStateToProps, mapAppDispatchToProps)(MainComponent)
+export const MainContainer = connect(
+  mapAppStateToProps,
+  mapAppDispatchToProps,
+)(MainComponent as any) as any

@@ -9,36 +9,60 @@ interface Props {
   onShow: (filter: string) => void
 }
 
-export class FooterComponent extends React.PureComponent<Props, void> {
-  renderTodoCount = () => {
+export class FooterComponent extends React.PureComponent<Props> {
+  render () {
+    return (
+      <footer className='footer'>
+        { this.renderTodoCount() }
+        <ul className='filters'>
+          { this.renderList() }
+        </ul>
+        { this.renderClearButton() }
+      </footer>
+    )
+  }
+
+  private renderTodoCount = () => {
     const { activeCount } = this.props
     const itemValue = activeCount > 1 ? 'item' : 'items'
 
     return (
-      <span className="todo-count">
+      <span className='todo-count'>
         <strong>{ activeCount || 'NO'}</strong> {itemValue} left
       </span>
     )
   }
 
-  renderFilterLink = (filter) => {
-    const { filter: selectedFlter, onShow } = this.props
+  private renderList = () => {
+    return ['show_all', 'show_active', 'show_completed'].map((filter) => {
+      return (
+        <li key={filter}>
+          { this.renderFilterLink(filter) }
+        </li>
+      )
+    })
+  }
+
+  private renderFilterLink = (filter) => {
+    const { filter: selectedFlter } = this.props
 
     return (
-      <a 
-        className={ classNames({selected: filter === selectedFlter}) }
+      <a
+        className={ classNames({ selected: filter === selectedFlter }) }
+        data-filter={ filter }
         style={{ cursor: 'pointer' }}
-        onClick={ () => onShow(filter) }>
+        onClick={ this.onChangeFilter }
+      >
         { filter }
       </a>
     )
   }
 
-  renderClearButton = () => {
-    const { completedCount,  clearCompleted } = this.props
+  private renderClearButton = () => {
+    const { completedCount } = this.props
     if (completedCount > 0) {
       return (
-        <button className='clear-completed' onClick={ () => clearCompleted() }>
+        <button className='clear-completed' onClick={ this.props.clearCompleted }>
           Clear Completed
         </button>
       )
@@ -47,21 +71,9 @@ export class FooterComponent extends React.PureComponent<Props, void> {
     }
   }
 
-  render() {
-    return (
-      <footer className="footer">
-        { this.renderTodoCount() }
-        <ul className="filters">
-          {['show_all', 'show_active', 'show_completed'].map(filter => {
-            return (
-              <li key={filter}>
-                { this.renderFilterLink(filter) }
-              </li>
-            )
-          })}
-        </ul>
-        { this.renderClearButton() }
-      </footer>
-    )
+  private onChangeFilter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const dataset = e.currentTarget.dataset
+    const filter = dataset.filter || ''
+    this.props.onShow(filter)
   }
 }
