@@ -16,4 +16,5 @@ const configureStore = () => {
 }
 
 export const store = configureStore()
+
 export * from './reducer'

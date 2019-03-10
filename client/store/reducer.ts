@@ -20,13 +20,8 @@ const todosInit: Todo[] = [{
 const todosFilter: Filter = 'show_all'  // show_all, show_completed, show_active
 
 export const todos = handleActions<Todo[], Todo>({
-  [addTodo.toString()]: (state: Todo[], action: Action<string>): Todo[] => {
-    const text = action.payload as string
-    return [{
-      id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
-      text,
-      completed: false,
-    }, ...state]
+  [addTodo.toString()]: (state: Todo[], action: Action<Todo>): Todo[] => {
+    return [action.payload!, ...state]
   },
 
   [deleteTodo.toString()]: (state: Todo[], action: Action<Todo>): Todo[] => {
@@ -68,12 +63,13 @@ export const todos = handleActions<Todo[], Todo>({
   },
 }, todosInit)
 
-export const filter = handleActions<Filter, Action<string>>({
-  [toggleFilter.toString()]: (state: Filter, action: Action<string>) => {
-    if (state === action.payload) {
-      return state
+export const filter = handleActions<Filter>({
+  [toggleFilter.toString()]: (state: Filter, action: Action<Filter>) => {
+    const { payload } = action
+    if (payload && payload !== state) {
+      return payload
     } else {
-      return action.payload
+      return state
     }
   },
 }, todosFilter)

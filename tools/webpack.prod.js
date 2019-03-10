@@ -66,7 +66,7 @@ module.exports = {
         ]
       },
       { test: /\.tsx?$/, loader: 'ts-loader' },
-      { test: /\.(svg|cur)$/, loader: 'file', query: {name: imageName} },
+      { test: /\.(svg|cur)$/, loader: 'url', query: { name: imageName } },
       { test: /\.woff((\?|#)[\?#\w\d_-]+)?$/, loader: 'url', query: { limit: 100, minetype: 'application/font-woff', name: fontName } },
       { test: /\.woff2((\?|#)[\?#\w\d_-]+)?$/, loader: 'url', query: { limit: 100, minetype: 'application/font-woff2', name: fontName } },
       { test: /\.ttf((\?|#)[\?#\w\d_-]+)?$/, loader: 'url', query: { limit: 100, minetype: 'application/octet-stream', name: fontName } },

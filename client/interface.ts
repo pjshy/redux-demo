@@ -4,7 +4,7 @@ export interface Todo {
   completed: boolean
 }
 
-export type Filter = string  // show_all, show_completed, show_active
+export type Filter = string & { kind?: 'Filter' }  // show_all, show_completed, show_active
 
 export interface AppState {
   todos: Todo[],
