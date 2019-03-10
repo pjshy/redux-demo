@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { Todo } from 'interface'
 
-import { TodoInput } from '../common'
+import { TodoInput } from '../Common'
 import { MapDispatchToProps, MapStateToProps } from './header.container'
 
 export class HeaderComponent extends React.PureComponent<MapDispatchToProps & MapStateToProps> {

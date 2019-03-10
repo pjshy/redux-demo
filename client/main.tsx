@@ -2,7 +2,7 @@ import * as React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 
-import 'todomvc-app-css/index.css'
+import './main.css'
 
 import { AppComponent as App } from './components'
 import { store } from './store'

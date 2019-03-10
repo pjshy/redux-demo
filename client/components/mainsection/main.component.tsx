@@ -1,14 +1,12 @@
 import * as React from 'react'
 
+import { Todo } from 'interface'
 import { MapStateToProps, MapDispatchToProps } from './main.container'
-import { FooterComponent } from '../common'
-import { Todo } from '../../interface'
-
-import { TodoItemComponent as TodoItem } from '../common'
+import { TodoItemComponent as TodoItem, FooterComponent } from '../Common'
 
 type Props = MapStateToProps & MapDispatchToProps
 
-export class MainComponent extends React.PureComponent<Props, void> {
+export class MainComponent extends React.PureComponent<Props> {
 
   filterItems = (filterType) => (todos: Todo[]) => {
     const filterFun = {

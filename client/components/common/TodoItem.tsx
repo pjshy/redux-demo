@@ -3,7 +3,7 @@ import * as classNames from 'classnames'
 
 import { Todo } from '../../interface'
 
-import { TodoInput } from '../common'
+import { TodoInput } from './TodoTextInput'
 
 interface Props {
   todo: Todo
@@ -60,8 +60,8 @@ export class TodoItemComponent extends React.PureComponent<Props, State> {
       element = (
         <div className='view'>
           <input
-            type='checkbox'
             className='toggle'
+            type='checkbox'
             checked={ todo.completed }
             onChange={ this.handleToggle(todo) }
           />

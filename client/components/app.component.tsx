@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import { HeaderContainer as Header } from './header'
-import { MainContainer as Main } from './mainsection'
+import { HeaderContainer as Header } from './Header'
+import { MainContainer as Main } from './MainSection'
 
 export class AppComponent extends React.PureComponent<{}, {}> {
 
