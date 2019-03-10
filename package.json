@@ -16,7 +16,7 @@
     "TypeScript"
   ],
   "author": "phy",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/classnames": "2.2.7",
     "@types/core-js": "2.5.0",

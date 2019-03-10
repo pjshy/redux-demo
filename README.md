@@ -1,11 +1,11 @@
-### start
+# Todo mvc
 
-#### for develop
+## For develop
 
 - yarn
 - npm start
 
-#### dependencies
+## dependencies
 
 - Typesctipt
 - React
@@ -13,4 +13,4 @@
 - React-Redux
 - Redux-actions
 
-[seed project](https://github.com/jaysoo/todomvc-redux-react-typescript)
+[Try it online](https://pjshy.github.io/redux-todos/)
