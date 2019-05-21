@@ -6,7 +6,6 @@ const jsName = 'js/[name].[hash:8].js'
 const fontName = 'font/[name].[hash:8].[ext]'
 
 module.exports =(env = {}) => {
-  console.info(env)
   const isDev = !!env.dev
   return {
     mode: isDev ? 'development' : 'production',
