@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { Todo } from 'interface'
 import { MapStateToProps, MapDispatchToProps } from './main.container'
-import { TodoItemComponent as TodoItem, FooterComponent } from '../Common'
+import { TodoItemComponent as TodoItem, FooterComponent } from '../common'
 
 type Props = MapStateToProps & MapDispatchToProps
 
