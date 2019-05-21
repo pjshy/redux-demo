@@ -4360,6 +4360,11 @@ to-space-case@^1.0.0:
   dependencies:
     to-no-case "^1.0.0"
 
+todomvc-app-css@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.npm.taobao.org/todomvc-app-css/download/todomvc-app-css-2.2.0.tgz#6f84b15d9d4e0cf186679489fb236050c822de11"
+  integrity sha1-b4SxXZ1ODPGGZ5SJ+yNgUMgi3hE=
+
 toposort@^1.0.0:
   version "1.0.3"
   resolved "http://registry.npm.taobao.org/toposort/download/toposort-1.0.3.tgz#f02cd8a74bd8be2fc0e98611c3bacb95a171869c"

@@ -2,8 +2,7 @@ import * as React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 
-import './main.css'
-
+import './style'
 import { AppComponent as App } from './components'
 import { store } from './store'
 

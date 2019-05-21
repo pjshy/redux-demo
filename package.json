@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "set NODE_ENV=development && webpack-dev-server --env.dev --progress",
-    "prebuild": "rm -rf docs/",
+    "prebuild": "rm -rf ./dist/",
     "build": "webpack",
     "lint": "tslint client/**/*.ts client/**/*.tsx",
     "lint:fix": "npm run lint -- --fix"
@@ -31,6 +31,7 @@
     "style-loader": "0.23.1",
     "stylus": "0.54.5",
     "stylus-loader": "3.0.2",
+    "todomvc-app-css": "^2.2.0",
     "ts-loader": "5.3.3",
     "tslint": "5.14.0",
     "tslint-eslint-rules": "5.4.0",

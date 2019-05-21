@@ -1,18 +1,15 @@
-import { connect, MapDispatchToPropsObject } from 'react-redux'
+import { connect } from 'react-redux'
 
 import { addTodo } from '../../store'
 import { AppState, Todo } from 'interface'
 import { HeaderComponent } from './header.component'
 
-export interface MapDispatchToProps extends MapDispatchToPropsObject {
-  addTodo: (one: Todo) => void
-}
 
 export interface MapStateToProps {
   todos: Todo[]
 }
 
-const mapAppDispatchToProps: MapDispatchToProps = {
+const mapAppDispatchToProps = {
   addTodo,
 }
 

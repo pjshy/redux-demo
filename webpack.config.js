@@ -6,13 +6,14 @@ const jsName = 'js/[name].[hash:8].js'
 const fontName = 'font/[name].[hash:8].[ext]'
 
 module.exports =(env = {}) => {
+  console.info(env)
   const isDev = !!env.dev
   return {
     mode: isDev ? 'development' : 'production',
 
     output: {
       filename: jsName,
-      path: path.join(__dirname, '/docs'),
+      path: path.join(__dirname, '/dist'),
       publicPath: isDev ? '/' : 'https://pjshy.github.io/redux-todos'
     },
   
@@ -43,12 +44,6 @@ module.exports =(env = {}) => {
     module: {
       rules: [
         {
-          test: /\.tsx?$/,
-          enforce: 'pre',
-          exclude: /node_modules/,
-          loader: 'tslint-loader'
-        },
-        {
           test: /\.css$/,
           use: [
             'style-loader',
@@ -65,7 +60,7 @@ module.exports =(env = {}) => {
             'stylus-loader'
           ]
         },
-        { test: /\.tsx?$/, loader: 'ts-loader' },
+        { test: /\.tsx?$/, loader: 'ts-loader', options: { transpileOnly: true} },
         { test: /\.(svg|cur)$/, loader: 'url', query: { name: imageName } },
         { test: /\.woff((\?|#)[\?#\w\d_-]+)?$/, loader: 'url', query: { limit: 100, minetype: 'application/font-woff', name: fontName } },
         { test: /\.woff2((\?|#)[\?#\w\d_-]+)?$/, loader: 'url', query: { limit: 100, minetype: 'application/font-woff2', name: fontName } },
